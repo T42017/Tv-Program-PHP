@@ -1,0 +1,28 @@
+th {
+	margin-left: 20px;
+	width: 70px;
+	height: 20px;
+	text-align: left;
+	border: 2px solid black;
+}
+
+td {
+	border-left: 2px solid black;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+tr:nth-child(3n+1) {
+	background-color: #00FF99;
+}
+
+tr:nth-child(3n+2) {
+	background-color: #34CFC7;
+}
+
+tr:nth-child(3n+3) {
+	background-color: #00AAFF;
+}
