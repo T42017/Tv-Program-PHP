@@ -16,10 +16,11 @@
 <p>
     <?php
 
-    $str = file_get_contents('http://json.xmltv.se/1.bluemovie.de_2017-09-23.js.gz');
+    $str = file_get_contents('http://json.xmltv.se/action.film.viasat.se_2017-10-06.js.gz');
     $val = json_decode($str, true);
     
-    echo $val['jsontv']['programme']->video;
+    echo $val['jsontv']['programme'][0]['credits']['actor'][0]['role'];
+
     ?>
 </p>
 
