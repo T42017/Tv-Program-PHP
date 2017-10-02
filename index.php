@@ -14,7 +14,9 @@
     $max = sizeof($ar['jsontv']['programme']);
     
     for($i = 0; $i < $max; $i++){
-        echo $ar['jsontv']['programme'][$i]['start']."<br>";
+        echo $ar['jsontv']['programme'][$i]['start']." ";
+        echo $ar['jsontv']['programme'][$i]['title']['sv']." ";
+        echo $ar['jsontv']['programme'][$i]['channel']."<br>";
     }
     ?>
 </body>
