@@ -4,9 +4,10 @@
 	} else {
 		$uri = 'http://';
 	}
+	$date = date("Y-m-d");
 	$uri .= $_SERVER['HTTP_HOST'];
 	echo "<h1><b>Index</b></h1>"; 
-    echo "<a href='svt1.php'> SVT1 </a>";
+    echo "<a href=" . 'svt1.php?date=' . $date . "> SVT1 </a>";
 	exit;
 
 ?>

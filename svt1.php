@@ -1,16 +1,12 @@
 <?php
 
 
+$date = $_GET['date'];
 
-#$d = new DateTime('+1day');
-#$tomorrow = $d->format('Y-m-d');
-
-$date = date("Y-m-d");
 $url = 'http://json.xmltv.se/svt1.svt.se_' . $date . '.js.gz';
 $jsondata = json_decode(file_get_contents($url), TRUE);
 $programme = $jsondata["jsontv"]["programme"];
 echo "<h2>" . $date . "</h2>";
-
 
 
 
@@ -25,10 +21,24 @@ for ($i=0; $i < sizeof($programme); $i++) {
 	echo "&nbsp" . "<b>" . $title . "</b>";
 	
 }
+
+
+$today = date("Y-m-d");
+$nextday = date('Y-m-d', strtotime(' +1 day'));
+
+
+echo 
+"<html>
+<form action='svt1.php?date=" . $date ."method = 'POST'>
+	<input id = 'submit' type='submit' value='svt'>
+</form>
+</html>";
+
 ?>
 
 <html>
-<form action="svt1.php" method = "post">
-	<input id = "submit" type="submit" value="next">
+</form>
+<form action="index.php" method = "GET">
+	<input id = "submit" type="submit" value="index">
 </form>
 </html>
