@@ -1,3 +1,93 @@
-html{
+html, body {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	font-family: monospace;
+	font-size: 14pt;
+	background-color: #6E3667;
+}
+
+div {
+	width: 90%;
+}
+
+header.SVT1 {
+	text-align: center;
+	width: 49.6%;
+	margin-left: 30%;
+	background-color: #88D317;
+	border: 2px solid #000000;
+}
+
+img.SVT1 {
+	width: 25%;
+}
+
+table {
+	margin-left: 30%;
+	width: 50%;
+	border-collapse: collapse;
+}
+
+th.tv {
+	border: 2px solid #000000;
+	background-color: #88D317;
+	color: #000000;
+    top: 0;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px;
+    position: -webkit-sticky;
+  	position: sticky;
+  	z-index: 1;
+}
+
+th.index {
+	border: 2px solid #000000;
+	background-color: #88D317;
+    top: 0;
+    column-span: all;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px;
+    position: -webkit-sticky;
+  	position: sticky;
+  	z-index: 1;
+}
 	
+tr {
+	color: #FFFFFF;
+	border: 2px solid #000000;
+	border-collapse: collapse;
+}
+
+tr.tr-currently-airing > td {
+	background-color: #88D317;
+}
+
+td {
+	border: 2px solid #000000;
+	border-collapse: collapse; 
+	padding: 4px;
+}
+
+tr.desc {
+	border: 2px solid #000000;
+	border-collapse: collapse; 
+	padding: 4px;
+	margin-top: 1em; 
+}
+
+tr:nth-child(2n+1) {
+	background-color: #535353;
+}
+
+tr:nth-child(2n+2) {
+	background-color: #1A0315;
+}
+
+a {
+	text-decoration: none;
+	font-size: bold;
+	color: #FFFFFF;
 }
