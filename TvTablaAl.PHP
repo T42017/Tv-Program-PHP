@@ -6,10 +6,10 @@
 
 <body>
 
-<h1>Index</h1><h1>BBC Knowledge Denmark</h1>
+<h1>Index</h1><h1>Al Jazerra</h1>
 
 <table>
-<tr><th><a href=TvTablaAl.PHP>Al Jazerra</th><th><a href=TvTablaBib.PHP>Boomerangtv Germany</th><th><a href=TvTabla.PHP?number=-1>yesterday</th><th>tomorrow</th></tr>
+<tr><th><a href=TvTabla.PHP>bbc knowledge Denmark</th><th><a href=TvTablaBib.PHP>Boomerangtv Germany</th><th><a href=TvTabla.PHP?number=-1>yesterday</th><th>tomorrow</th></tr>
 <tr><th>programme</th><th>StartTime</th><th>EndTime</th></th><th>Description</th></tr>
 <?php
 
@@ -19,7 +19,7 @@ if(isset($_GET['number']))
 }
 else{
 
-$url="http://json.xmltv.se/bbcknowledge.dk_2017-10-03.js.gz";
+$url="http://json.xmltv.se/aljazeera.net_2017-10-03.js.gz";
 	
 }	
 

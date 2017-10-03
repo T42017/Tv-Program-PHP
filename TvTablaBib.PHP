@@ -6,10 +6,10 @@
 
 <body>
 
-<h1>Index</h1><h1>BBC Knowledge Denmark</h1>
+<h1>Index</h1><h1>Boomerangtv Germany</h1>
 
 <table>
-<tr><th><a href=TvTablaAl.PHP>Al Jazerra</th><th><a href=TvTablaBib.PHP>Boomerangtv Germany</th><th><a href=TvTabla.PHP?number=-1>yesterday</th><th>tomorrow</th></tr>
+<tr><th><a href=TvTabla.PHP>bbc knowledge Denmark</th><th><a href=TvTablaAl.PHP>Al Jazerra</th><th><a href=TvTabla.PHP?number=-1>yesterday</th><th>tomorrow</th></tr>
 <tr><th>programme</th><th>StartTime</th><th>EndTime</th></th><th>Description</th></tr>
 <?php
 
@@ -19,7 +19,7 @@ if(isset($_GET['number']))
 }
 else{
 
-$url="http://json.xmltv.se/bbcknowledge.dk_2017-10-03.js.gz";
+$url="http://json.xmltv.se/boomerangtv.de_2017-10-03.js.gz";
 	
 }	
 
@@ -43,14 +43,14 @@ $StartTimestamp = $json['jsontv']['programme'][$key]['start'] ;
 $EndTimestamp = $json['jsontv']['programme'][$key]['stop'] ;
 echo '<tr>';
 if($nowtime > $StartTimestamp && $nowtime < $EndTimestamp){
-    echo '<td><b>' . $json['jsontv']['programme'][$key]['title']['en'] .'</b></td>';
+    echo '<td><b>' . $json['jsontv']['programme'][$key]['title']['de'] .'</b></td>';
 }
 else{
-echo '<td>' . $json['jsontv']['programme'][$key]['title']['en'] .'</td>';
+echo '<td>' . $json['jsontv']['programme'][$key]['title']['de'] .'</td>';
 }
 echo '<td>' . date("H:i",$StartTimestamp) .'</td>';
 echo '<td>' . date("H:i",$EndTimestamp) .'</td>';
-echo '<td>' . $json['jsontv']['programme'][$key]['desc']['en'] .'</td>';
+echo '<td>' . $json['jsontv']['programme'][$key]['desc']['de'] .'</td>';
 echo '</tr>';
 
 }	
