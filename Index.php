@@ -7,8 +7,12 @@
 	<body>
 
 <?php
+	if(isset($_GET['date']))
+		$date = $_GET['date'];
+	else
+		$date = date("Y-m-d");
 
-	$page = "http://json.xmltv.se/svt1.svt.se_2017-10-08.js.gz";
+	$page = "http://json.xmltv.se/hd.tv3.se_".$date.".js.gz";
  	$data = json_decode(file_get_contents($page), true);
 ?>
 <table>
