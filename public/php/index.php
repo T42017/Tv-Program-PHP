@@ -7,6 +7,7 @@ include './classes/tvshow.php';
 	<?php
 	$date = isset($_GET["date"]) ? htmlspecialchars($_GET["date"]) : date('Y-m-d');
 	$url = "http://json.xmltv.se/svt1.svt.se_{$date}.js.gz";
+	// $url = "http://json.xmltv.se/tv6.se_{$date}.js.gz";
 	$obj = json_decode(file_get_contents($url), true);
 	$programmes = $obj["jsontv"]["programme"];
 	$tv_shows = array();
@@ -35,7 +36,7 @@ include './classes/tvshow.php';
 		echo $tv_shows[$i]->is_currently_airing() ? "<tr class='tr-currently-airing'>" : "<tr>";
 		echo "<td>" . $tv_shows[$i]->start . "</td>";
 		echo "<td>" . $tv_shows[$i]->stop . "</td>";
-		echo "<td>" . $tv_shows[$i]->title . "</td>";
+		echo "<td><a href='javascript:void(0)'>" . $tv_shows[$i]->title . "</a></td>";
 		echo "</tr>";		
 	}
 	echo "</table>";
