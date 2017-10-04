@@ -1,11 +1,23 @@
 table {
     background: rgb(50, 50, 50);
     margin: 20px auto;
-    padding: 1%;
+    padding: 0.2%;
+    max-width: 80%;
 }
-    
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+}
+
 th {
     padding: 6px;
+    text-align: left;
 }
 
 #selected {
