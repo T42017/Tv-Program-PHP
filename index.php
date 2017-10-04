@@ -8,6 +8,8 @@
 	$uri .= $_SERVER['HTTP_HOST'];
 	echo "<h1><b>Index</b></h1>"; 
     echo "<a href=" . 'svt1.php?date=' . $date . "> SVT1 </a>";
+    echo "<br> <br> <a href=" . 'svt2.php?date=' . $date . "> SVT2 </a>";
+    echo "<br> <br> <a href=" . 'tv4.php?date=' . $date . "> TV4 </a>";
 	exit;
 
 ?>

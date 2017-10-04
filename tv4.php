@@ -13,7 +13,7 @@
 				<tr><th>Start</th><th>Stop</th></th><th>Program</th></tr>
 <?php
 $date = isset($_GET["date"]) ? htmlspecialchars($_GET["date"]) : date('Y-m-d');
-$url = "http://json.xmltv.se/svt1.svt.se_{$date}.js.gz";
+$url = "http://json.xmltv.se/tv4.se_{$date}.js.gz";
 echo "<h3>" . $date . "</h3>";	
 
 $jsondata = json_decode(file_get_contents($url), TRUE);
