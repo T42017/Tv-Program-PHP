@@ -9,17 +9,26 @@
 <h1>Index</h1><h1>BBC Knowledge Denmark</h1>
 
 <table>
-<tr><th><a href=TvTablaAl.PHP>Al Jazerra</th><th><a href=TvTablaBib.PHP>Boomerangtv Germany</th><th><a href=TvTabla.PHP?number=-1>yesterday</th><th>tomorrow</th></tr>
+<tr><th><a href=TvTablaAl.PHP>Al Jazerra</th><th><a href=TvTablaBib.PHP>Boomerangtv Germany</th></tr>
 <tr><th>programme</th><th>StartTime</th><th>EndTime</th></th><th>Description</th></tr>
 <?php
 
 if(isset($_GET['number']))
 {
-	
+
+$time=$_GET['number'];  
+$adress="http://json.xmltv.se/bbcknowledge.dk_2017-10-";    
+$adress=$adress.$time.".js.gz";
+$url=$adress;
+    
 }
 else{
+    
 
-$url="http://json.xmltv.se/bbcknowledge.dk_2017-10-03.js.gz";
+$time=date("m-d",time());
+$adress="http://json.xmltv.se/bbcknowledge.dk_2017-";    
+$adress=$adress.$time.".js.gz";
+$url=$adress;
 	
 }	
 
@@ -54,6 +63,22 @@ echo '<td>' . $json['jsontv']['programme'][$key]['desc']['en'] .'</td>';
 echo '</tr>';
 
 }	
+for($i=0;$i<9;$i++){
+    
+if($i >= (date("d",time())+5)){
+$b=(30-($i-(date("d",time())+5)));
+    } else {  
+$b=date("d",time())+5-$i;
+if($b<10){
+$b="0".$b;    
+}
+}
+echo'<tr>';
+echo "<td><a href='?number={$b}'>{$b}</a></td>";     
+echo '</tr>';    
+}    
+
+    
 //$title = $json['jsontv']['programme'][0]['title']['en'];
 //echo $title;
 
