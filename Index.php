@@ -4,24 +4,33 @@
 	<meta charset="UTF-8">
 	</head>
 	<body>
-
+			<h1>TV kanaler </h1>
 <?php
 	if(isset($_GET['date']))
 		$date = $_GET['date'];
 	else
 		$date = date("Y-m-d");
 	
-	if(isset($_GET['url']))
-		$url = $_GET['url'];
+	if(isset($_GET['channel']))
+		$channel = $_GET['channel'];
 	else
-		$url = "svt1.svt.se";
+	 	$channel = "svt.svt.se";
 	
-	//hd.tv3.se
-	//tv4.se
-
-	$page = "http://json.xmltv.se/".$url."_".$date.".js.gz";
+	$page = "http://json.xmltv.se/".$channel."_".$date.".js.gz";
  	$data = json_decode(file_get_contents($page), true);
 ?>
+
+<form method="get">
+    <select name="channel" onchange="this.form.submit();">
+    	<option>Välj kanal</option>
+    	<option>svt1.svt.se</option>
+        <option>svt2.svt.se</option>
+        <option>hd.tv3.se</option>
+        <option>tv4.se</option>
+        <option>kanal5.se</option>
+        <option>tv6.se</option>
+    </select>
+</form>	
 
 <table>
 	<tr>
@@ -35,7 +44,7 @@
 
 		<th>
 			Programtitel
-		</th>
+		</th>		
 	</tr>
 
 <?php
