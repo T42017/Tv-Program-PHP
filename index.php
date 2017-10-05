@@ -18,11 +18,10 @@
     if (isset($_GET['channel']))
         $channel = $_GET['channel'];
     
-    $day = 0;
-    if (isset($_GET['day'])) {
-        $day = $_GET['day'];
-        $date = date('Y-m-d', strtotime(' ' . ($day >= 0 ? '+' :  '') . $day . ' day'));
-    }
+    if (isset($_GET['date'])) 
+        $date = $_GET['date'];
+    else
+        $date = date('Y-m-d', time());
     
     $url = $urlStart . $channel . '_' . $date . $urlEnd;
     
@@ -40,20 +39,19 @@
     ?>
     
     <form>
-        <input type="submit" name="channel" value="kunskapskanalen.svt.se">
-        <input type="submit" name="channel" value="lifestyletv.se">
-        <input type="submit" name="channel" value="animalplanet.discovery.eu">
-    </form>
-    
-    <form>
-        <select name="day" onChange="this.form.submit()">
+        <select name="date">
             <?php
                 for ($x = -7; $x <= 7; $x++) {
-                    $date = date('Y-m-d', strtotime(' ' . ($x >= 0 ? '+' :  '') . $x . ' day'));
-                    echo '<option value="' . $x . '" ' . ($x == $day ? 'selected="selected"' : '') . '>' . $date . '</option>';
-                } 
+                    $tempDate = date('Y-m-d', strtotime(' ' . ($x >= 0 ? '+' :  '') . $x . ' day'));
+                    echo '<option value="' . $tempDate . '" ' . ($tempDate == $date ? 'selected="selected"' : '') . '>' . $tempDate . '</option>';
+                }
             ?>
         </select>
+        <button name="channel" type="submit" value="<?php echo $channel; ?>"
+        >Update</button>
+        <button type="submit" name="channel" value="kunskapskanalen.svt.se">Kunskapskanelen</button>
+        <button type="submit" name="channel" value="lifestyletv.se">Lifestyle tv</button>
+        <button type="submit" name="channel" value="animalplanet.discovery.eu">Animalplanet</button>
     </form>
     
     <table>
