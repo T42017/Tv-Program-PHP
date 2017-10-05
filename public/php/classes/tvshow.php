@@ -9,9 +9,9 @@ class TvShow {
 		$this->title = $title;
 		$this->start = date("H:i", $start);
 		$this->stop  = date("H:i", $stop);
-		$this->episodeNum  = isset($episodeNum) ? $episodeNum : "No episode number";
-		$this->category    = isset($category) ? $category : "No categories";
-		$this->description = isset($description) ? $description : "No description";
+		$this->episodeNum  = $episodeNum;
+		$this->category    = $category;
+		$this->description = $description;
 	}
 
 	function is_currently_airing() {
@@ -28,6 +28,22 @@ class TvShow {
 			"cateogry"    => $this->category,
 			"description" => $this->description
 		);
+	}
+
+	function full_info_string() {
+		return $this->description["sv"];
+		// $string = "";
+		// foreach ($this->full_info() as $info) {
+		// 	if (is_array($info)) {
+		// 		foreach ($info as $inner_value) {
+		// 			$string .= $inner_value . ", ";
+		// 		}
+		// 	}
+		// 	else {
+		// 		$string .= $info . ", ";
+		// 	}
+		// }
+		// return $string;
 	}
 }
 ?>

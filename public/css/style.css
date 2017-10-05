@@ -10,6 +10,15 @@ div {
 	margin: 10px 0 100px 0;
 }
 
+div#date-control {
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    font-size: 40px;
+    font-family: sans-serif;
+    height: 0px;
+}
+
 table {
 	/*border-collapse: collapse;*/
 	/*border: 2px solid #000000;*/
@@ -26,7 +35,7 @@ th {
     padding: 5px;
     position: -webkit-sticky;
     position: sticky;
-    z-index: 1;
+    z-index: 2;
 }
 	
 tr {
@@ -67,31 +76,28 @@ tr.tr-currently-airing > td > a {
 	color: #FFFFFF;
 }
 
-
-
 .tooltip {
     position: relative;
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 100px;
+    width: 100%;
     background-color: #000000;
     color: #FFFFFF;
-    text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
     position: absolute;
-    z-index: 2;
-    bottom: -40%;
-    left: 110%;
-
+    z-index: 3;
+    top: 0%;
+    left: 105%;
 }
 
 .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
     right: 100%;
+    top: 10px;
     border-width: 5px;
     border-style: solid;
     border-color: transparent black transparent transparent;

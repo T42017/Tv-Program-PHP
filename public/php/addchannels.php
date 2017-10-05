@@ -1,5 +1,5 @@
 <?php
-$url = "http://json.xmltv.se";
+$url = "http://json.xmltv.se/";
 $html = file_get_contents($url);
 $dom = new DOMDocument();
 $dom->loadHTML($html);
