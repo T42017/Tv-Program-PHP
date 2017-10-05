@@ -20,32 +20,36 @@ $jsondata = json_decode(file_get_contents($url), TRUE);
 $programme = $jsondata["jsontv"]["programme"];
 
 
-
 for ($i=0; $i < sizeof($programme); $i++) { 
 
 	$start = $programme[$i]["start"];
 	$stop = $programme[$i]["stop"];
 	$title = $programme[$i]["title"]["sv"];
 	#$desc = $programme[$i]["desc"]["sv"];
-	
-
 	echo '<tr>';
 	echo '<td>' . date('H:i', $start) . ' - ' .'</td>';
-	echo '<td>' . date("H:i", $stop) . '</td>';
-	echo '<td>' . '&emsp;'. "<script>
-  function a() {
-    alert('description')
-    }
-</script>
-<a onClick='a();' style='cursor: pointer; cursor: hand;'> {$title}</a>" . '</td>';
-
-
-	echo '</tr>';
+	echo '<td>' . date("H:i", $stop) . '&emsp;'  . '</td>' ;
+	echo '<td>' . "<script> function a() { alert('description') } </script>"; 
+    echo "<a onClick='a();' style='cursor: pointer; cursor: hand;'> {$title}</a>" . '</td>' . '</tr>';
+	
 }
 
-echo "
-"
+foreach ($jsondata['jsontv']['programme'] as $value) {
+ 		
+ 	$keys = array_keys($value['title']);
+ 	$start = date("H:i", $value['start']);
+ 	$stop = date("H:i", $value['stop']);
+ 	$currentTime = time();
 
+	if ($currentTime >= $value['start'] && $currentTime <= $value['stop'])
+	{
+ 		echo "<tr><td><b>".$start."</b></td><td><b>".$stop."</b></td><td><b>".$value['title'][$keys[0]].'</b></td></tr>';
+	}
+ 	else 
+ 	{
+ 		echo "<tr><td>".$start."</td><td>".$stop."</td><td>".$value['title'][$keys[0]].'</td></tr>';
+ 	}
+}
 ?>
 
 
