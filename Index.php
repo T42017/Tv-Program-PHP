@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	</head>
 	<body>
-			<h1>TV kanaler </h1>
+			<h1>TV-kanaler </h1>
 <?php
 	if(isset($_GET['date']))
 		$date = $_GET['date'];
@@ -14,35 +14,59 @@
 	if(isset($_GET['channel']))
 		$channel = $_GET['channel'];
 	else
-	 	$channel = "svt.svt.se";
+	 	$channel = "svt1.svt.se";
 	
 	$page = "http://json.xmltv.se/".$channel."_".$date.".js.gz";
  	$data = json_decode(file_get_contents($page), true);
 ?>
 
+<h2>Välj kanal</h2>	
+
+<?php
+	$twoDaysBefeYda = date('Y-m-d', strtotime(' -3 day'));
+	$oneDayBefYda = date('Y-m-d', strtotime(' -2 day'));
+ 	$yesterday = date('Y-m-d', strtotime(' -1 day'));
+ 	$currentDate = date('Y-m-d', strtotime('today'));
+ 	$tomorrow = date('Y-m-d', strtotime(' +1 day'));
+ 	$oneDayAftTmrw = date('Y-m-d', strtotime(' +2 day'));
+	$twoDaysAftTmrw = date('Y-m-d', strtotime(' +3 day'));
+
+ 	$channels = array("svt1.svt.se", "svt2.svt.se", "tv3.se", "tv4.se", "kanal5.se", "tv6.se",);
+?>
+
+<ul>
+	<?php echo "<li><a href='?channel={$channel}&date={$twoDaysBefeYda}'>{$twoDaysBefeYda}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$oneDayBefYda}'>{$oneDayBefYda}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$yesterday}'>{$yesterday}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$currentDate}'>{$currentDate}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$tomorrow}'>{$tomorrow}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$oneDayAftTmrw}'>{$oneDayAftTmrw}</a></li>"; ?>
+	<?php echo "<li><a href='?channel={$channel}&date={$twoDaysAftTmrw}'>{$twoDaysAftTmrw}</a></li>"; ?>
+</ul>
+
 <form method="get">
     <select name="channel" onchange="this.form.submit();">
-    	<option>Välj kanal</option>
-    	<option>svt1.svt.se</option>
-        <option>svt2.svt.se</option>
-        <option>hd.tv3.se</option>
-        <option>tv4.se</option>
-        <option>kanal5.se</option>
-        <option>tv6.se</option>
+
+<?php
+   	foreach ($channels as $v) {
+    		$selected = ($channel === $v) ? " selected='selected' " : "";
+    		echo "<option{$selected}>{$v}</option>";
+    	}
+?>
     </select>
 </form>	
 
-<table>
+<table style="margin-top: 25px;">
 	<tr>
-		<th>	 
+		<th style="padding-right: 15px;">	 
 			Starttid
 		</th>
 
-		<th>
+		<th style="padding-right: 15px;">
 			Sluttid
 		</th>
 
-		<th>
+		<th style="text-align: left;">
 			Programtitel
 		</th>		
 	</tr>
@@ -63,4 +87,4 @@
 
 </table>
 	</body>
-</html>3
+</html>
