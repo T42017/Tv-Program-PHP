@@ -65,11 +65,11 @@ echo '</tr>';
 }	
 for($i=0;$i<9;$i++){
     
-if($i >= (date("d",time())+5)){
-$b=(30-($i-(date("d",time())+5)));
+if($i >= (date("d",time())+4)){
+$b=(30-($i-(date("d",time())+4)));
 $b=(date("m", time())-1)."-".$b;    
     } else {  
-$b=date("d",time())+5-$i;
+$b=date("d",time())+4-$i;
 if($b<10){
 $b="0".$b;    
 }
