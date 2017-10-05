@@ -17,7 +17,7 @@ if(isset($_GET['number']))
 {
 
 $time=$_GET['number'];  
-$adress="http://json.xmltv.se/bbcknowledge.dk_2017-10-";    
+$adress="http://json.xmltv.se/bbcknowledge.dk_2017-";    
 $adress=$adress.$time.".js.gz";
 $url=$adress;
     
@@ -67,11 +67,13 @@ for($i=0;$i<9;$i++){
     
 if($i >= (date("d",time())+5)){
 $b=(30-($i-(date("d",time())+5)));
+$b=(date("m", time())-1)."-".$b;    
     } else {  
 $b=date("d",time())+5-$i;
 if($b<10){
 $b="0".$b;    
 }
+$b=date("m",time())."-".$b;    
 }
 echo'<tr>';
 echo "<td><a href='?number={$b}'>{$b}</a></td>";     

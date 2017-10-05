@@ -16,7 +16,7 @@
 if(isset($_GET['number']))
 {
 		$time=$_GET['number'];  
-$adress="http://json.xmltv.se/boomerangtv.de_2017-10-";    
+$adress="http://json.xmltv.se/boomerangtv.de_2017-";    
 $adress=$adress.$time.".js.gz";
 $url=$adress;
 }
@@ -61,20 +61,22 @@ echo '<td>' . $json['jsontv']['programme'][$key]['desc']['de'] .'</td>';
 echo '</tr>';
 
 }	
-      for($i=0;$i<9;$i++){
+for($i=0;$i<9;$i++){
     
 if($i >= (date("d",time())+5)){
 $b=(30-($i-(date("d",time())+5)));
+$b=(date("m", time())-1)."-".$b;    
     } else {  
 $b=date("d",time())+5-$i;
 if($b<10){
 $b="0".$b;    
 }
+$b=date("m",time())."-".$b;    
 }
 echo'<tr>';
 echo "<td><a href='?number={$b}'>{$b}</a></td>";     
 echo '</tr>';    
-}    
+}  
 //$title = $json['jsontv']['programme'][0]['title']['en'];
 //echo $title;
 
