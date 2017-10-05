@@ -8,11 +8,12 @@
 
 body{
     background-color: #E9FAF8;
-
+    padding-top: 1%;
 }
 
 h1{
     text-align: center;
+    padding: 234%;
 }
 
 nav{
@@ -40,11 +41,12 @@ button{
 
 td{
     padding: 5px 9px 10px 0px;
+
 }
 .title{
     width:70%;
 }
-td:hover{
+.title:hover{
     cursor: pointer;
 }
 
@@ -65,25 +67,22 @@ th{
     width: 40%;
 }
 table{
-    position:relative;
+
     background-color: #FEE488;
     border: solid;
     border-radius: 30px;
     padding: 5%;
     text-align: center;
     margin-bottom: 5%;
-
+    width:100%;
 }
 h2{
     text-align: center;
 }
-.table{
-    width:100%;
-}
 
 
-.txtrev{
-}
+
+
 
 .details{
     border: solid 1px;
