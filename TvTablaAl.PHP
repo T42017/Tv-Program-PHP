@@ -16,7 +16,7 @@
 if(isset($_GET['number']))
 {
 	$time=$_GET['number'];  
-$adress="http://json.xmltv.se/aljazeera.net_2017-";    
+$adress="http://json.xmltv.se/arab.aljazeera.net_2017-";
 $adress=$adress.$time.".js.gz";
 $url=$adress;
     
@@ -24,7 +24,7 @@ $url=$adress;
 else{
 
     $time=date("m-d",time());
-$adress="http://json.xmltv.se/aljazeera.net_2017-";    
+$adress="http://json.xmltv.se/arab.aljazeera.net_2017-";    
 $adress=$adress.$time.".js.gz";
 $url=$adress;
 	
