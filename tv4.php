@@ -5,7 +5,7 @@
 		</head>
 		<body>
 
-			<h1>SVT1</h1>
+			<h1>TV4</h1>
 			<form action="index.php" method = "GET">
 				<input id = "submit" type="submit" value="Index">
 			</form>
