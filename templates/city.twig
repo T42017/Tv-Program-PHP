@@ -7,55 +7,63 @@
 	<body>
         <style>
 div {
-    background-color: lightgrey;
     width: 200px;
     height: 50px;
     float: left;
-    padding: 25px;
-    margin: 25px;
+    padding: 5px;
+    margin: 5px;
 }
-            form{
-                float:left;
-            }
+#true{
+    background-color: aqua;
+}
+#false{
+    background-color: darkorange;
+}
+.day{
+    float:left;
+}
+.channel{
+    float: left;
+}
 </style>
 		<h1>Länder</h1>
-		<h2>Idag är det {{ date }} <br> Visar program för dag {{ showdate }}</h2>
+		<h2>Idag är det {{ date }} <br> Visar program för dag {{ showdate }}. Du tittar på {{ watching }}</h2>
         
-<div>
-    <form action="index.php" method="get">
-        <input type="hidden"  name="date" value="{{ datetomorrow }}"  />
-        <input type="hidden"  name="channel" value=""  />
-        <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
-        <input type="submit" value="Next day" />
-    </form>
-    <form action="index.php" method="get">
-        <input type="hidden"  name="date" value="{{ date }}"  />
-        <input type="hidden"  name="channel" value=""  />
-        <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
-        <input type="submit" value="Today" />
-    </form>
-    <form action="index.php" method="get">
+        
+    <form class="day" action="index.php" method="get">
         <input type="hidden"  name="date" value="{{ dateyesterday }}"  />
         <input type="hidden"  name="channel" value=""  />
         <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
         <input type="submit" value="Previous day" />
     </form>
-    <form action="index.php" method="get">
+    <form class="day" action="index.php" method="get">
+        <input type="hidden"  name="date" value="{{ date }}"  />
+        <input type="hidden"  name="channel" value=""  />
+        <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
+        <input type="submit" value="Today" />
+    </form>
+    <form class="day" action="index.php" method="get">
+        <input type="hidden"  name="date" value="{{ datetomorrow }}"  />
+        <input type="hidden"  name="channel" value=""  />
+        <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
+        <input type="submit" value="Next day" />
+    </form>
+        <br><br>
+    <form class="channel" action="index.php" method="get">
         <input type="hidden"  name="date" value="{{ date }}"  />
         <input type="hidden"  name="channel" value="Next"  />
         <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
         <input type="submit" value="Next channel" />
     </form>
-    <form action="index.php" method="get">
+    <form class="channel" action="index.php" method="get">
         <input type="hidden"  name="date" value="{{ date }}"  />
         <input type="hidden"  name="channel" value="Previous"  />
         <input type="hidden"  name="channelnumber" value="{{ currentchannel }}"  />
         <input type="submit" value="Previous channel" />
-    </form>
-</div>     
-	
+    </form>  
+	<br><br><br>
 {% for program in programs %}
-		<div>* {{ program.title }} <br> {{ program.timestart }}  -  {{ program.timeend }}  </div>
+		<div id="{{ program.isplaying }}">* {{ program.title }} <br> {{ program.timestart }}  -  {{ program.timeend }}  </div> 
 {% else %}
 	No programs found! :(
 {% endfor %}
