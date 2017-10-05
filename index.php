@@ -37,60 +37,56 @@
             echo "<h2>Choose a channel</h2>";
         }
         ?>
-        
-        
         <form method="get">
             <ul>
             <li><button class="" type="submit" name="channel" value="svt1.svt.se">Svt1</button></li>
             <li><button class="" type="submit" name="channel" value="svt2.svt.se">Svt2</button></li>
             <li><button class="" type="submit" name="channel" value="kunskapskanalen.svt.se">Kunskapskanalen</button></li>
             </ul>
-        </form>
-        
-        
         <form method="get">
             <input type="hidden" name="channel" value="<?php echo $channel?>">
             <input type="hidden" name="date" value="<?php echo $date?>">
-            <input class="NavButton" type="submit" name="action" value="<-Next">
-            <input class="NavButton" type="submit" name="action" value="Previous->">
+            <input class="NavButton" type="submit" name="action" value="<-Previous">
+            <input class="NavButton" type="submit" name="action" value="Next->">
         </form>
-        
-        
     </nav>
     <div class="TextContainer">
         <main class="Programmes">
             <ol>
                 <?php 
                     if (isset($_GET['channel'])){
-                    $json = file_get_contents('http://json.xmltv.se/'.$channel.'_'.$date.'.js.gz');
-                    $table = json_decode($json, true);
-                
-                    $max = sizeof($table['jsontv']['programme']);
-                    for($i = 0; $i < $max; $i++){
-                    $timeStart = $table['jsontv']['programme'][$i]['start'];
-                    $timeEnd = $table['jsontv']['programme'][$i]['stop'];
-                    $currentTime = strtotime("now") + 2*60*60;
-                    
-                    echo "<div>";
-                    if ($timeStart < $currentTime And $timeEnd > $currentTime){
-                        echo "<button class='txtRev'><b>".$table['jsontv']['programme'][$i]['title']['sv']." --- ".gmdate("H:i", $timeStart)." - ".gmdate('H:i', $timeEnd)."</b></button>";
-                    }
-                    else{
-                        echo "<button class='txtRev'>".$table['jsontv']['programme'][$i]['title']['sv']." --- ".gmdate("H:i", $timeStart)." - ".gmdate('H:i', $timeEnd)."</button>";
-                    }
-                    
-                    if (isset($table['jsontv']['programme'][$i]['desc']['sv'])){
-                        echo "<div class='details'>".$table['jsontv']['programme'][$i]['desc']['sv']."</div>";
-                    }
-                    else{
-                        echo "<div class='details'><p class='txtFix'>Ingen ytterligare information tillgänglig</p></div>";
-                    }
-                    echo "</div>";
-                    }
-                    }
-                    else{
+                        if(@file_get_contents('http://json.xmltv.se/'.$channel.'_'.$date.'.js.gz') === false){
+                            echo "<p>There is no table available for the desired date</p>";
+                        }
+                        else{
+                            $json = file_get_contents('http://json.xmltv.se/'.$channel.'_'.$date.'.js.gz');
+                            $table = json_decode($json, true);
+                            $max = sizeof($table['jsontv']['programme']);
                         
+                        
+                            for($i = 0; $i < $max; $i++){
+                                $timeStart = $table['jsontv']['programme'][$i]['start'];
+                                $timeEnd = $table['jsontv']['programme'][$i]['stop'];
+                                $currentTime = strtotime("now") + 2*60*60;
+                                echo "<div>";
+                                if ($timeStart < $currentTime And $timeEnd > $currentTime){
+                                    echo "<button class='txtRev'><b>".$table['jsontv']['programme'][$i]['title']['sv']." --- ".gmdate("H:i", $timeStart)." - ".gmdate('H:i', $timeEnd)."</b></button>";
+                                    }
+                                else{
+                                    echo "<button class='txtRev'>".$table['jsontv']['programme'][$i]['title']['sv']." --- ".gmdate("H:i", $timeStart)." - ".gmdate('H:i', $timeEnd)."</button>";
+                                }
+                    
+                                if (isset($table['jsontv']['programme'][$i]['desc']['sv'])){
+                                    echo "<div class='details'>".$table['jsontv']['programme'][$i]['desc']['sv']."</div>";
+                                }
+                                else{
+                                    echo "<div class='details'><p class='txtFix'>Ingen ytterligare information tillgänglig</p></div>";
+                                }
+                                echo "</div>";
+                            }
+                        }
                     }
+                   
                 ?>
             </ol>
         </main>
