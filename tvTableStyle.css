@@ -13,7 +13,6 @@ body{
 
 h1{
     text-align: center;
-    padding: 234%;
 }
 
 nav{
@@ -38,13 +37,12 @@ button{
 
 }
 
-
 td{
     padding: 5px 9px 10px 0px;
 
 }
 .title{
-    width:70%;
+    width:60%;
 }
 .title:hover{
     cursor: pointer;
@@ -79,10 +77,6 @@ table{
 h2{
     text-align: center;
 }
-
-
-
-
 
 .details{
     border: solid 1px;
