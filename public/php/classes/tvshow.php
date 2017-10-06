@@ -31,19 +31,8 @@ class TvShow {
 	}
 
 	function full_info_string() {
-		return $this->description["sv"];
-		// $string = "";
-		// foreach ($this->full_info() as $info) {
-		// 	if (is_array($info)) {
-		// 		foreach ($info as $inner_value) {
-		// 			$string .= $inner_value . ", ";
-		// 		}
-		// 	}
-		// 	else {
-		// 		$string .= $info . ", ";
-		// 	}
-		// }
-		// return $string;
+		// return is_array($this->description) ? $this->description["sv"] : $this->description;
+		return $this->description;
 	}
 }
 ?>

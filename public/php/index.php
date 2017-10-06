@@ -3,9 +3,18 @@ include 'header.php';
 include './classes/tvshow.php';
 include 'addchannels.php';
 ?>
+<body class="index">
+	<header>
+		TV-Tableau.PontusHemsida.net
+	</header>
+<div class= "index">
 
-<div>
 	<form action="showchannel.php" method="get">
+		<label for="channel">
+			Kanal
+		</label>
+		<br />
+
 		<select name="channel">
 			<?php
 			foreach ($channelLinks as $channelLink) {
@@ -13,8 +22,9 @@ include 'addchannels.php';
 			}
 			?>
 		</select>
-
-		<input type="submit" value="Submit"/>
+		<br />
+		
+		<input type="submit" value="Visa"/>
 	</form>
 </div>
 
